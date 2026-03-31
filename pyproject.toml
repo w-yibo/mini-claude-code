@@ -1,0 +1,29 @@
+[project]
+name = "mini-claude-code"
+version = "0.1.0"
+description = "A minimal Python re-implementation of Claude Code's core agent loop"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+keywords = ["claude", "coding-agent", "cli", "ai", "anthropic", "tool-use"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Topic :: Software Development",
+    "License :: OSI Approved :: MIT License",
+]
+dependencies = [
+    "anthropic>=0.40.0",
+]
+
+[project.optional-dependencies]
+openai = ["openai>=1.0.0"]
+all = ["anthropic>=0.40.0", "openai>=1.0.0"]
+
+[project.scripts]
+mini-claude-code = "mini_claude_code.cli:main"
+mcc = "mini_claude_code.cli:main"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
