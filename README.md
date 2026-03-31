@@ -95,21 +95,26 @@ pip install .
 mcc --version          # mini-claude-code 0.1.0
 mcc --help             # show all options
 
-# Set your API key (pick one)
-export ANTHROPIC_API_KEY="sk-ant-..."   # for Claude
-export OPENAI_API_KEY="sk-..."          # for GPT / compatible APIs
+# Set your API key — model is auto-selected to match:
+export ANTHROPIC_API_KEY="sk-ant-..."   # → defaults to claude-sonnet-4
+export OPENAI_API_KEY="sk-..."          # → defaults to gpt-4o-mini
 
-# Interactive mode — just run it
+# Just run it — no need to specify -m, provider is auto-detected from your key
 mcc
 
 # One-shot mode
 mcc -p "fix the bug in main.py"
 
-# Use any model + custom endpoint
+# Override model or endpoint when needed
+mcc -m gpt-4o
 mcc -m gpt-4o-mini --api-base-url https://your-proxy.com/v1
 
 # JSON output (for scripting / pipelines)
 mcc -p "list all functions" --output-format json
+```
+
+> **How auto-detection works**: If you don't specify `-m`, the default model is chosen based on which API key you set. `ANTHROPIC_API_KEY` → `claude-sonnet-4`, `OPENAI_API_KEY` → `gpt-4o-mini`. If both are set, Anthropic takes priority. You can always override with `-m`.
+
 ```
 
 ### More Examples
