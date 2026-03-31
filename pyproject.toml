@@ -25,5 +25,5 @@ mini-claude-code = "mini_claude_code.cli:main"
 mcc = "mini_claude_code.cli:main"
 
 [build-system]
-requires = ["setuptools>=68.0"]
-build-backend = "setuptools.backends._legacy:_Backend"
+requires = ["setuptools>=68.0", "wheel"]                                           
+build-backend = "setuptools.build_meta"  
