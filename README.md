@@ -84,9 +84,32 @@ cd mini-claude-code
 # Install with all providers
 pip install ".[all]"
 
-# Now you can run from anywhere
-mcc                              # interactive mode
-mcc -p "fix the bug in main.py"  # one-shot mode
+# Or install with only Anthropic support
+pip install .
+
+# This gives you two global commands:
+#   mcc              — short alias
+#   mini-claude-code — full name
+
+# Verify installation
+mcc --version          # mini-claude-code 0.1.0
+mcc --help             # show all options
+
+# Set your API key (pick one)
+export ANTHROPIC_API_KEY="sk-ant-..."   # for Claude
+export OPENAI_API_KEY="sk-..."          # for GPT / compatible APIs
+
+# Interactive mode — just run it
+mcc
+
+# One-shot mode
+mcc -p "fix the bug in main.py"
+
+# Use any model + custom endpoint
+mcc -m gpt-4o-mini --api-base-url https://your-proxy.com/v1
+
+# JSON output (for scripting / pipelines)
+mcc -p "list all functions" --output-format json
 ```
 
 ### More Examples
